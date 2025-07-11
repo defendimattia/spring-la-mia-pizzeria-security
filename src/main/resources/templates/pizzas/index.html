@@ -14,7 +14,13 @@
     <div class="container my-3 text-center">
         <h1 class="my-5">Le nostre pizze</h1>
 
-        <th:block th:replace="~{fragments/pizzaCard :: pizzaCard(${pizzas})}"></th:block>
+        <div th:if="${#lists.isEmpty(pizzas)}" class="alert alert-warning" role="alert">
+            Nessuna pizza disponibile
+        </div>
+
+        <th:block th:unless="${#lists.isEmpty(pizzas)}" th:replace="~{fragments/pizzaCard :: pizzaCard(${pizzas})}">
+        </th:block>
+
     </div>
 
 </body>
