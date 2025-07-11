@@ -36,7 +36,6 @@ public class Pizza {
     @DecimalMin(value = "0.00", inclusive = true, message = "The price cannot be less than 0.00")
     private BigDecimal price;
 
-
     public Integer getId() {
         return this.id;
     }
@@ -75,6 +74,17 @@ public class Pizza {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                " id='" + getId() + "'" +
+                ", name='" + getName() + "'" +
+                ", description='" + getDescription() + "'" +
+                ", imageURL='" + getImageURL() + "'" +
+                ", price='" + getPrice() + "'" +
+                "}";
     }
 
 }
