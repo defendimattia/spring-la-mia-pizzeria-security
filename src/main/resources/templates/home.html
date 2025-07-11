@@ -3,15 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
-
+    <title>Mia Pizzeria</title>
     <th:block th:replace="~{fragments/style :: styles}"></th:block>
 </head>
 
 <body>
 
     <th:block th:replace="~{fragments/navbar :: navbar}"></th:block>
-    <h1>Home</h1>
+
+    <div class="container text-center my-5">
+        <h1 class="display-4 mb-4">Benvenuto a la Mia Pizzeria! &#127470;&#127481;</h1>
+        <p class="lead">Scopri le nostre pizze artigianali preparate con ingredienti freschi ogni giorno.</p>
+
+        <a href="/pizze" class="btn btn-success btn-lg mt-4">Guarda il Menù</a>
+    </div>
+
+    <footer class="text-center text-muted py-4">
+        <small>&copy; 2025 Mia Pizzeria - Tutti i diritti riservati</small>
+    </footer>
 
 </body>
 
