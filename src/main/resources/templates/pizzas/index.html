@@ -9,11 +9,14 @@
 </head>
 
 <body>
-
     <th:block th:replace="~{fragments/navbar :: navbar}"></th:block>
-    <h1>Elenco pizze</h1>
 
-    <p th:text="${pizzas}"></p>
+    <div class="container my-3 text-center">
+        <h1 class="my-5">Le nostre pizze</h1>
+
+        <th:block th:replace="~{fragments/pizzaCard :: pizzaCard(${pizzas})}"></th:block>
+    </div>
+
 </body>
 
 </html>
