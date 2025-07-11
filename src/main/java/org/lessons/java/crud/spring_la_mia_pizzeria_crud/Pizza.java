@@ -28,11 +28,53 @@ public class Pizza {
     @Lob
     private String description;
 
+    @Column(name = "image_url")
     private String imageURL;
 
     @Column(nullable = false)
     @NotNull(message = "Must insert a price")
     @DecimalMin(value = "0.00", inclusive = true, message = "The price cannot be less than 0.00")
     private BigDecimal price;
+
+
+    public Integer getId() {
+        return this.id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImageURL() {
+        return this.imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public BigDecimal getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 
 }
