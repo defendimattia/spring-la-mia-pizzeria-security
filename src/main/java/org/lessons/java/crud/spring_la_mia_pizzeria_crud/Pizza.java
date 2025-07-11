@@ -17,6 +17,17 @@ import jakarta.validation.constraints.NotNull;
 @Table(name = "pizzas")
 public class Pizza {
 
+    public Pizza(Integer id, String name, String description, String imageURL, BigDecimal price) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.imageURL = imageURL;
+        this.price = price;
+    }
+
+    public Pizza() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
