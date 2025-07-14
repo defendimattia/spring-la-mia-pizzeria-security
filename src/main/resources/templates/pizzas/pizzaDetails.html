@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="|Pizza ${selectedPizza.name}|"></title>
+
+    <th:block th:replace="~{fragments/style :: styles}"></th:block>
+</head>
+
+<body>
+    <th:block th:replace="~{fragments/navbar :: navbar}"></th:block>
+
+    <th:block th:replace="~{fragments/pizzaInfos :: pizzaInfos}"></th:block>
+
+</body>
+
+</html>
