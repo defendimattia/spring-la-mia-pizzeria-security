@@ -11,7 +11,7 @@
 <body>
     <th:block th:replace="~{fragments/navbar :: navbar}"></th:block>
 
-    <th:block th:replace="~{fragments/pizzaInfos :: pizzaInfos}"></th:block>
+    <th:block th:replace="~{fragments/pizzaInfos :: pizzaInfos(${selectedPizza})}"></th:block>
 
 </body>
 

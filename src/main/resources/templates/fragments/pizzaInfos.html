@@ -1,5 +1,5 @@
-<th:block th:fragment="pizzaInfos">
-    <div class="container d-flex my-5" th:object="${selectedPizza}">
+<th:block th:fragment="pizzaInfos(pizza)">
+    <div class="container d-flex my-5" th:object="${pizza}">
 
         <div class="container">
             <img th:src="*{imageURL}" alt="*{name}" width="100%">
