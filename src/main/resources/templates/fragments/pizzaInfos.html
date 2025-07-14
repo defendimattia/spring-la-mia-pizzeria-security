@@ -1,0 +1,17 @@
+<th:block th:fragment="pizzaInfos">
+    <div class="container d-flex my-5" th:object="${selectedPizza}">
+
+        <div class="container">
+            <img th:src="*{imageURL}" alt="*{name}" width="100%">
+        </div>
+
+        <div class="container">
+            <h1 th:text="|Pizza *{name}|"></h1>
+            <hr class="border border-danger border-2 opacity-100">
+
+            <i th:text="*{description}"></i>
+            <h4 th:text="|*{price} €|" class="my-3"></h4>
+        </div>
+
+    </div>
+</th:block>
