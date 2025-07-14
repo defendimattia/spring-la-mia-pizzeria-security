@@ -29,7 +29,7 @@ public class PizzaController {
     @GetMapping("/{id}")
     public String pizzaDetails(@PathVariable Integer id, Model model) {
 
-        Pizza pizzaDetails = repository.getReferenceById(id);
+        Pizza pizzaDetails = repository.findById(id).get();
         model.addAttribute("selectedPizza", pizzaDetails);
 
         return "pizzas/pizzaDetails";
