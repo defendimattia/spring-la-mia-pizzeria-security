@@ -12,6 +12,23 @@
     <th:block th:replace="~{fragments/navbar :: navbar}"></th:block>
 
     <div class="container my-3 text-center">
+
+        <form th:action="@{/pizze}" method="get">
+
+            <div class="mb-3">
+                <label for="ingredientsForm" class="form-label">Cerca per ingredienti</label>
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" id="ingredientsForm" th:value="${param.ingredient}" name="ingredients">
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">cerca</button>
+            </div>
+
+        </form>
+
+
+
         <h1 class="my-5">Le nostre pizze</h1>
 
         <div th:if="${#lists.isEmpty(pizzas)}" class="alert alert-warning" role="alert">
