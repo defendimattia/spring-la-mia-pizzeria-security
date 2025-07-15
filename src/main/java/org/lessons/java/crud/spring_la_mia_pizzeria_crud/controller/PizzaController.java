@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
-@RequestMapping("/pizze")
+@RequestMapping("/pizzas")
 public class PizzaController {
 
     @Autowired
@@ -51,5 +51,14 @@ public class PizzaController {
 
         return "pizzas/pizzaDetails";
     }
+
+    @GetMapping("/create")
+    public String create(Model model) {
+
+        model.addAttribute("pizza", new Pizza());
+
+        return "pizzas/create";
+    }
+    
 
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Aggiungi una pizza</title>
+
+    <th:block th:replace="~{fragments/style :: styles}"></th:block>
+</head>
+
+<body>
+    <th:block th:replace="~{fragments/navbar :: navbar}"></th:block>
+
+    <div class="container my-5">
+        <h1 class="text-center">Aggiungi una pizza</h1>
+        <hr>
+
+        <form id="pizza-form" th:object="${pizza}" th:action="@{/pizzas/create}" method="post">
+
+            <div class="my-3">
+                <label for="name" class="form-label">Nome:</label>
+                <input type="text" class="form-control" id="name" th:fields="${name}">
+            </div>
+
+            <div class="my-3">
+                <label for="description">Ingredienti:</label>
+                <input type="text" class="form-control" id="description" th:fields="${description}">
+            </div>
+
+            <div class="my-3">
+                <label for="imageURL">URL immagine:</label>
+                <input type="text" class="form-control" id="imageURL" th:fields="${imageURL}">
+            </div>
+
+            <div class="my-3">
+                <label for="price">Prezzo:</label>
+                <input type="number" class="form-control" id="price" th:fields="${price}" min="0">
+            </div>
+
+            <div class="my-3 d-flex justify-content-between">
+                <input type="submit" class="btn btn-success" value="Aggiungi pizza!">
+                <input type="reset" class="btn btn-warning" value="Azzera campi di compilazione">
+            </div>
+
+
+        </form>
+    </div>
+
+</body>
+
+</html>
