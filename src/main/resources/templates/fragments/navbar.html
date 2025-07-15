@@ -1,12 +1,14 @@
 <!-- navbar -->
 <th:block th:fragment="navbar">
     <header>
-        <nav class="text-bg-danger p-3 gap-2 d-flex align-items-center">
 
-            <h3>Mia Pizzeria </h3>
+        <nav class="text-bg-danger p-3 d-flex align-items-center justify-content-between">
+            <h3>Mia Pizzeria</h3>
 
-            <a class="btn btn-success" th:href="@{/}" role="button">Home</a>
-            <a class="btn btn-success" th:href="@{/pizze}" role="button">Pizze</a>
+            <div class="d-flex gap-3">
+                <a class="text-white text-decoration-none" th:href="@{/pizze}" role="button">Pizze</a>
+                <a class="text-white text-decoration-none" th:href="@{/}" role="button">Home</a>
+            </div>
 
         </nav>
     </header>
