@@ -1,7 +1,7 @@
 <th:block th:fragment="pizzaCard(array)">
     <div class="row row-cols-4">
         <div class="col" th:each="item : ${array}">
-            <a th:href="@{/pizze/{id}(id=${item.id})}" class="text-decoration-none">
+            <a th:href="@{/pizzas/{id}(id=${item.id})}" class="text-decoration-none">
                 <div class="card mb-4 border-0">
                     <img th:src="${item.imageURL}" class="card-img-top" th:alt="${item.name}">
                     <div class="card-body">
