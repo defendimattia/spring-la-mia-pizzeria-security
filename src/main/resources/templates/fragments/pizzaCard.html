@@ -15,10 +15,18 @@
                 </div>
 
             </a>
-            
-            <a th:href="@{/pizzas/edit/{id}(id=${item.id})}" class="btn btn-success btn-sm">
-                <i class="fa-solid fa-pencil"></i>
-            </a>
+            <div class="d-flex gap-1 justify-content-center">
+                <a th:href="@{/pizzas/edit/{id}(id=${item.id})}" class="btn btn-success btn-sm">
+                    <i class="fa-solid fa-pencil"></i>
+                </a>
+
+                <form action="#" th:action="@{/pizzas/delete/{id}(id=${item.id})}" method="post">
+                    <button class="btn btn-danger btn-sm" type="submit" id="submitButton">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </form>
+            </div>
+
         </div>
     </div>
 </th:block>
