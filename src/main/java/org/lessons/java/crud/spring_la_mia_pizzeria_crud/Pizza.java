@@ -44,7 +44,7 @@ public class Pizza {
 
     @Column(nullable = false)
     @NotNull(message = "Must insert a price")
-    @DecimalMin(value = "0.00", inclusive = true, message = "The price cannot be less than 0.00")
+    @DecimalMin(value = "0.00", inclusive = false, message = "The price cannot be equal or less than 0.00")
     private BigDecimal price;
 
     public Integer getId() {
