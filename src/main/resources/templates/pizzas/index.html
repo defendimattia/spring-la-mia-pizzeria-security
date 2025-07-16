@@ -13,23 +13,27 @@
 
     <div class="container my-3 text-center">
 
-        <form th:action="@{/pizzas}" method="get">
-
-            <div class="mb-3">
-                <label for="ingredientsForm" class="form-label">Cerca per ingredienti</label>
-            </div>
-            <div class="mb-3">
-                <input type="text" class="form-control" id="ingredientsForm" th:value="${param.ingredient}" name="ingredients">
-            </div>
-            <div class="mb-3">
-                <button type="submit" class="btn btn-success">cerca</button>
+        <form th:action="@{/pizzas}" method="get" class="d-flex align-items-end gap-2 justify-content-center my-5">
+            <div>
+                <label for="ingredientsForm" class="form-label"></label>
             </div>
 
+            <div>
+                <input type="text" class="form-control" id="ingredientsForm" th:value="${param.ingredients}"
+                    name="ingredients" placeholder="Cerca per ingrediente...">
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-success mt-auto">Cerca</button>
+            </div>
         </form>
 
 
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>Le nostre pizze</h1>
+            <a th:href="@{/pizzas/create}" class="btn btn-success">Aggiungi pizza</a>
+        </div>
 
-        <h1 class="my-5">Le nostre pizze</h1>
 
         <div th:if="${#lists.isEmpty(pizzas)}" class="alert alert-warning" role="alert">
             Nessuna pizza disponibile

@@ -1,5 +1,5 @@
 <th:block th:fragment="pizzaCard(array)">
-    <div class="row row-cols-4">
+    <div class="row row-cols-4 my-4">
         <div class="col" th:each="item : ${array}">
             <a th:href="@{/pizzas/{id}(id=${item.id})}" class="text-decoration-none">
                 <div class="card mb-4 border-0">
