@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "pizzas")
@@ -34,12 +35,15 @@ public class Pizza {
 
     @Column(nullable = false)
     @NotBlank(message = "Must insert a name")
+    @Size(min = 2, max = 100, message = "The name must be between 2 and 100 characters long")
     private String name;
 
     @Lob
+    @Size(min = 3, max = 500, message = "The description must be at most 500 characters long")
     private String description;
 
     @Column(name = "image_url")
+    @Size(max = 300, message = "The image URL must be at most 300 characters long")
     private String imageURL;
 
     @Column(nullable = false)
