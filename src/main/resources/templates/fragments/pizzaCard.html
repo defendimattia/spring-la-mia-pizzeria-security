@@ -20,13 +20,36 @@
                     <i class="fa-solid fa-pencil"></i>
                 </a>
 
-                <form action="#" th:action="@{/pizzas/delete/{id}(id=${item.id})}" method="post">
-                    <button class="btn btn-danger btn-sm" type="submit" id="submitButton">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </form>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                    th:attr="data-bs-target=|#staticBackdrop-${item.id}|"><i class="fa-solid fa-trash"></i>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" th:id="|staticBackdrop-${item.id}|" data-bs-backdrop="static"
+                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Elimina</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div th:text="|Eliminare Pizza ${item.name}?|" class="modal-body"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+
+                                <form action="#" th:action="@{/pizzas/delete/{id}(id=${item.id})}" method="post">
+                                    <button class="btn btn-danger" type="submit" id="submitButton">Elimina</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
+
     </div>
 </th:block>
