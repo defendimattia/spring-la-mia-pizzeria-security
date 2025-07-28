@@ -61,16 +61,19 @@ public class PizzaController {
     @GetMapping("/create")
     public String create(Model model) {
 
+        model.addAttribute("isNew" , true);
         model.addAttribute("pizza", new Pizza());
 
-        return "pizzas/create";
+        return "pizzas/create-or-edit";
     }
 
     @PostMapping("/create")
     public String store(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
 
+
+
         if (bindingResult.hasErrors()) {
-            return "/pizzas/create";
+            return "/pizzas/create-or-edit";
         }
 
         repository.save(formPizza);
@@ -81,7 +84,7 @@ public class PizzaController {
     public String edit(@PathVariable Integer id, Model model) {
 
         model.addAttribute("pizza", repository.findById(id).get());
-        return "/pizzas/edit";
+        return "/pizzas/create-or-edit";
     }
 
     @PostMapping("/edit/{id}")

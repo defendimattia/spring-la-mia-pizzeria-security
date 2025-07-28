@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Aggiungi una pizza</title>
+    <title th:text="${isNew} ? 'Aggiungi pizza' : |Modifica pizza ${pizza.name}|"></title>
 
     <th:block th:replace="~{fragments/style :: styles}"></th:block>
 </head>
@@ -12,10 +12,11 @@
     <th:block th:replace="~{fragments/navbar :: navbar}"></th:block>
 
     <div class="container my-5">
-        <h1 class="text-center">Aggiungi una pizza</h1>
+        <h1 class="text-center" th:text="${isNew} ? 'Aggiungi pizza' : |Modifica pizza ${pizza.name}|"></h1>
         <hr>
 
-        <form id="pizza-form" th:object="${pizza}" th:action="@{/pizzas/create}" method="post">
+        <form id="pizza-form" th:object="${pizza}"
+            th:action="${isNew} ? @{/pizzas/create} : @{/pizzas/edit/{id}(id = *{id})}" method="post">
 
             <div class="my-3">
                 <label for="name" class="form-label">Nome:</label>
@@ -27,7 +28,8 @@
 
             <div class="my-3">
                 <label for="description">Ingredienti:</label>
-                <input type="text" class="form-control" id="description" th:field="*{description}" th:errorClass="is-invalid">
+                <input type="text" class="form-control" id="description" th:field="*{description}"
+                    th:errorClass="is-invalid">
                 <div th:if="${#fields.hasErrors('description')}" class="text-danger">
                     <small th:errors="*{description}"></small>
                 </div>
@@ -43,14 +45,15 @@
 
             <div class="my-3">
                 <label for="price">Prezzo:</label>
-                <input type="number" class="form-control" id="price" th:field="*{price}" min="0" th:errorClass="is-invalid">
+                <input type="number" class="form-control" id="price" th:field="*{price}" min="0"
+                    th:errorClass="is-invalid">
                 <div th:if="${#fields.hasErrors('price')}" class="text-danger">
                     <small th:errors="*{price}"></small>
                 </div>
             </div>
 
             <div class="my-3 d-flex justify-content-between">
-                <input type="submit" class="btn btn-success" value="Aggiungi pizza!">
+                <input type="submit" class="btn btn-success" value="Salva">
                 <input type="reset" class="btn btn-warning" value="Azzera campi di compilazione">
             </div>
 
