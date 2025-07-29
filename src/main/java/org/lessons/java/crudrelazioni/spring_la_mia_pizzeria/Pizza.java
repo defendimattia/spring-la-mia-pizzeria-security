@@ -1,4 +1,4 @@
-package org.lessons.java.crud.spring_la_mia_pizzeria_crud;
+package org.lessons.java.crudrelazioni.spring_la_mia_pizzeria;
 
 import java.math.BigDecimal;
 
@@ -7,7 +7,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
@@ -32,6 +34,10 @@ public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "special_offert_id", nullable = false)
+    private SpecialOffert specialOffert;
 
     @Column(nullable = false)
     @NotBlank(message = "Must insert a name")

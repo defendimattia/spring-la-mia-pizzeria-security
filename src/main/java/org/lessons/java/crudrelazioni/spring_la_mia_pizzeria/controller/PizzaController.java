@@ -1,10 +1,10 @@
-package org.lessons.java.crud.spring_la_mia_pizzeria_crud.controller;
+package org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.lessons.java.crud.spring_la_mia_pizzeria_crud.Pizza;
-import org.lessons.java.crud.spring_la_mia_pizzeria_crud.repository.PizzaRepository;
+import org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.Pizza;
+import org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
