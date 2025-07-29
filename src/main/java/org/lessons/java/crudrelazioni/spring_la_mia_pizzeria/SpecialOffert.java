@@ -1,13 +1,13 @@
 package org.lessons.java.crudrelazioni.spring_la_mia_pizzeria;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
@@ -19,9 +19,9 @@ public class SpecialOffert {
     public SpecialOffert() {
     }
 
-    public SpecialOffert(Integer id, List<Pizza> pizzas, String title, LocalDate dataStart, LocalDate dataEnd) {
+    public SpecialOffert(Integer id, Pizza pizza, String title, LocalDate dataStart, LocalDate dataEnd) {
         this.id = id;
-        this.pizzas = pizzas;
+        this.pizza = pizza;
         this.title = title;
         this.dataStart = dataStart;
         this.dataEnd = dataEnd;
@@ -31,8 +31,9 @@ public class SpecialOffert {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany(mappedBy = "specialOffert")
-    private List<Pizza> pizzas;
+    @ManyToOne
+    @JoinColumn(name = "pizza_id", nullable = false)
+    private Pizza pizza;
 
     @NotBlank(message = "Must insert a title")
     private String title;
@@ -51,12 +52,12 @@ public class SpecialOffert {
         this.id = id;
     }
 
-    public List<Pizza> getPizzas() {
-        return this.pizzas;
+    public Pizza getPizza() {
+        return this.pizza;
     }
 
-    public void setPizzas(List<Pizza> pizzas) {
-        this.pizzas = pizzas;
+    public void setPizza(Pizza pizza) {
+        this.pizza = pizza;
     }
 
     public String getTitle() {
@@ -87,7 +88,7 @@ public class SpecialOffert {
     public String toString() {
         return "{" +
                 " id='" + getId() + "'" +
-                ", pizza='" + getPizzas() + "'" +
+                ", pizza='" + getPizza() + "'" +
                 ", title='" + getTitle() + "'" +
                 ", dataStart='" + getDataStart() + "'" +
                 ", dataEnd='" + getDataEnd() + "'" +
