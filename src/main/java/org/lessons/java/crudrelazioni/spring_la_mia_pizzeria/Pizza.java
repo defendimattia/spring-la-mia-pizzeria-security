@@ -96,6 +96,14 @@ public class Pizza {
         this.price = price;
     }
 
+    public List<SpecialOffert> getSpecialOfferts() {
+        return this.specialOfferts;
+    }
+
+    public void setSpecialOfferts(List<SpecialOffert> specialOfferts) {
+        this.specialOfferts = specialOfferts;
+    }
+
     @Override
     public String toString() {
         return "{" +
