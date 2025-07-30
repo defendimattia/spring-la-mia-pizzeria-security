@@ -12,24 +12,30 @@
             <i th:text="*{description}"></i>
             <h4 th:text="|*{price} €|" class="my-3"></h4>
 
-            <div>
+            <div class="my-5">
                 <h5>Offerte speciali</h>
-                <hr class="border border-danger opacity-100">
+                    <hr class="border border-danger opacity-100">
 
-                <div th:if="${#lists.isEmpty(pizza.getSpecialOfferts())}" class="alert alert-warning" role="alert">
-                    Nessuna offerta per questa pizza
-                </div>
+                    <div th:if="${#lists.isEmpty(pizza.getSpecialOfferts())}" class="alert alert-warning" role="alert">
+                        Nessuna offerta per questa pizza
+                    </div>
 
-                <div th:unless="${#lists.isEmpty(pizza.getSpecialOfferts())}">
-                    <ul class="list-group list-group-flush">
-                        <li th:each="offert : ${pizza.getSpecialOfferts()}" th:text="${offert.title}" class="list-group-item"></li>
-                    </ul>
-                </div>
+                    <div th:unless="${#lists.isEmpty(pizza.getSpecialOfferts())}">
+                        <ul class="list-group list-group-flush">
+                            <li th:each="offert : ${pizza.getSpecialOfferts()}" class="list-group-item"
+                                th:object="${offert}">
+                                <a class="btn btn-primary btn-sm"
+                                    th:href="@{/specialofferts/edit/{id}( id = ${offert.id} )}"><i
+                                        class="fa-solid fa-pencil"></i></a>
+                                [[${offert.title}]]
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a th:href="@{/pizzas/{id}/specialoffert(id = *{id})}" class="btn btn-success btn-sm my-2">Aggiungi
+                        offerta speciale</a>
             </div>
 
-
-            <a th:href="@{/pizzas/{id}/specialoffert(id = *{id})}"><button type="button"
-                    class="btn btn-success">Aggiungi offerta speciale</button></a>
         </div>
 
     </div>
