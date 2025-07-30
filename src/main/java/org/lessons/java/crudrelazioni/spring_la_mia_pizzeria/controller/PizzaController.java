@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.Pizza;
+import org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.SpecialOffert;
 import org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,7 +62,7 @@ public class PizzaController {
     @GetMapping("/create")
     public String create(Model model) {
 
-        model.addAttribute("isNew" , true);
+        model.addAttribute("isNew", true);
         model.addAttribute("pizza", new Pizza());
 
         return "pizzas/create-or-edit";
@@ -69,8 +70,6 @@ public class PizzaController {
 
     @PostMapping("/create")
     public String store(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
-
-
 
         if (bindingResult.hasErrors()) {
             return "/pizzas/create-or-edit";
@@ -105,6 +104,18 @@ public class PizzaController {
 
         repository.deleteById(id);
         return "redirect:/pizzas";
+    }
+
+    @GetMapping("/{id}/specialoffert")
+    public String createSpecialOffert(@PathVariable Integer id, Model model) {
+        model.addAttribute("isNew", true);
+
+        SpecialOffert specialOffert = new SpecialOffert();
+        specialOffert.setPizza(repository.findById(id).get());
+
+        model.addAttribute("specialOffert", specialOffert);
+
+        return "special-offerts/create-or-edit";
     }
 
 }

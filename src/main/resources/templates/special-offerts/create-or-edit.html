@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${isNew} ? 'Aggiungi offerta speciale' : 'Modifica offerta speciale'"></title>
+
+    <th:block th:replace="~{fragments/style :: styles}"></th:block>
+</head>
+
+<body>
+    <th:block th:replace="~{fragments/navbar :: navbar}"></th:block>
+
+    <div class="container my-5">
+        <h1 class="text-center" th:text="${isNew} ? 'Aggiungi offerta speciale' : 'Modifica offerta speciale'"></h1>
+        <hr>
+
+        <form id="specialOffert-form" th:object="${specialOffert}"
+            th:action="${isNew} ? @{/specialofferts/create} : @{/{id}/specialoffert(id = *{id})}" method="post">
+
+            <input type="hidden" id="relativePizza" th:field="*{pizza}">
+
+            <div class="my-3">
+                <label for="title" class="form-label">Titolo:</label>
+                <input type="text" class="form-control" id="title" th:field="*{title}" th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('title')}" class="text-danger">
+                    <small th:errors="*{title}"></small>
+                </div>
+            </div>
+
+            <div class="my-3">
+                <label for="dateStart" class="form-label">Data inizio:</label>
+                <input type="date" class="form-control" id="dateStart" th:field="*{dateStart}" th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('dateStart')}" class="text-danger">
+                    <small th:errors="*{dateStart}"></small>
+                </div>
+            </div>
+
+            <div class="my-3">
+                <label for="dateEnd" class="form-label">Data fine:</label>
+                <input type="date" class="form-control" id="dateEnd" th:field="*{dateEnd}" th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('dateEnd')}" class="text-danger">
+                    <small th:errors="*{dateEnd}"></small>
+                </div>
+            </div>
+
+            <div class="my-3 d-flex justify-content-between">
+                <input type="submit" class="btn btn-success" value="Salva">
+                <input type="reset" class="btn btn-warning" value="Azzera campi di compilazione">
+            </div>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
