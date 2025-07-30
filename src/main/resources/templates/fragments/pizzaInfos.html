@@ -11,10 +11,28 @@
 
             <i th:text="*{description}"></i>
             <h4 th:text="|*{price} €|" class="my-3"></h4>
-            <a th:href="@{/pizzas/{id}/specialoffert(id = *{id})}"><button type="button" class="btn btn-success">Aggiungi offerta speciale</button></a>
+
+            <div>
+                <h5>Offerte speciali</h>
+                <hr class="border border-danger opacity-100">
+
+                <div th:if="${#lists.isEmpty(pizza.getSpecialOfferts())}" class="alert alert-warning" role="alert">
+                    Nessuna offerta per questa pizza
+                </div>
+
+                <div th:unless="${#lists.isEmpty(pizza.getSpecialOfferts())}">
+                    <ul class="list-group list-group-flush">
+                        <li th:each="offert : ${pizza.getSpecialOfferts()}" th:text="${offert.title}" class="list-group-item"></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <a th:href="@{/pizzas/{id}/specialoffert(id = *{id})}"><button type="button"
+                    class="btn btn-success">Aggiungi offerta speciale</button></a>
         </div>
-        
+
     </div>
-    
+
 
 </th:block>
