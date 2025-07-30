@@ -19,12 +19,12 @@ public class SpecialOffert {
     public SpecialOffert() {
     }
 
-    public SpecialOffert(Integer id, Pizza pizza, String title, LocalDate dataStart, LocalDate dataEnd) {
+    public SpecialOffert(Integer id, Pizza pizza, String title, LocalDate dateStart, LocalDate dateEnd) {
         this.id = id;
         this.pizza = pizza;
         this.title = title;
-        this.dataStart = dataStart;
-        this.dataEnd = dataEnd;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
     }
 
     @Id
@@ -39,10 +39,10 @@ public class SpecialOffert {
     private String title;
 
     @FutureOrPresent(message = "The starting date cannot be in the past")
-    private LocalDate dataStart;
+    private LocalDate dateStart;
 
     @FutureOrPresent(message = "The ending date cannot be in the past")
-    private LocalDate dataEnd;
+    private LocalDate dateEnd;
 
     public Integer getId() {
         return this.id;
@@ -68,20 +68,20 @@ public class SpecialOffert {
         this.title = title;
     }
 
-    public LocalDate getDataStart() {
-        return this.dataStart;
+    public LocalDate getdateStart() {
+        return this.dateStart;
     }
 
-    public void setDataStart(LocalDate dataStart) {
-        this.dataStart = dataStart;
+    public void setdateStart(LocalDate dateStart) {
+        this.dateStart = dateStart;
     }
 
-    public LocalDate getDataEnd() {
-        return this.dataEnd;
+    public LocalDate getdateEnd() {
+        return this.dateEnd;
     }
 
-    public void setDataEnd(LocalDate dataEnd) {
-        this.dataEnd = dataEnd;
+    public void setdateEnd(LocalDate dateEnd) {
+        this.dateEnd = dateEnd;
     }
 
     @Override
@@ -90,8 +90,8 @@ public class SpecialOffert {
                 " id='" + getId() + "'" +
                 ", pizza='" + getPizza() + "'" +
                 ", title='" + getTitle() + "'" +
-                ", dataStart='" + getDataStart() + "'" +
-                ", dataEnd='" + getDataEnd() + "'" +
+                ", dateStart='" + getdateStart() + "'" +
+                ", dateEnd='" + getdateEnd() + "'" +
                 "}";
     }
 
