@@ -11,7 +11,10 @@
 
             <i th:text="*{description}"></i>
             <h4 th:text="|*{price} €|" class="my-3"></h4>
+            <a th:href="@{/pizzas/{id}/specialoffert(id = *{id})}"><button type="button" class="btn btn-success">Aggiungi offerta speciale</button></a>
         </div>
-
+        
     </div>
+    
+
 </th:block>
