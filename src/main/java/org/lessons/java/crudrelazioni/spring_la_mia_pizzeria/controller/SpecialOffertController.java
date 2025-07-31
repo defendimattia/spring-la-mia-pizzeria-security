@@ -32,7 +32,7 @@ public class SpecialOffertController {
 
         repository.save(formSpecialOffert);
 
-        return "redirect:/pizzas" + formSpecialOffert.getPizza().getId();
+        return "redirect:/pizzas/" + formSpecialOffert.getPizza().getId();
     }
 
     @PostMapping("/{id}/edit")

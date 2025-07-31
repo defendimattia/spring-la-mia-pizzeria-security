@@ -68,19 +68,19 @@ public class SpecialOffert {
         this.title = title;
     }
 
-    public LocalDate getdateStart() {
+    public LocalDate getDateStart() {
         return this.dateStart;
     }
 
-    public void setdateStart(LocalDate dateStart) {
+    public void setDateStart(LocalDate dateStart) {
         this.dateStart = dateStart;
     }
 
-    public LocalDate getdateEnd() {
+    public LocalDate getDateEnd() {
         return this.dateEnd;
     }
 
-    public void setdateEnd(LocalDate dateEnd) {
+    public void setDateEnd(LocalDate dateEnd) {
         this.dateEnd = dateEnd;
     }
 
@@ -90,8 +90,8 @@ public class SpecialOffert {
                 " id='" + getId() + "'" +
                 ", pizza='" + getPizza() + "'" +
                 ", title='" + getTitle() + "'" +
-                ", dateStart='" + getdateStart() + "'" +
-                ", dateEnd='" + getdateEnd() + "'" +
+                ", dateStart='" + getDateStart() + "'" +
+                ", dateEnd='" + getDateEnd() + "'" +
                 "}";
     }
 
