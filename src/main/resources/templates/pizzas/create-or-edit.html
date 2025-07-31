@@ -54,7 +54,10 @@
 
             <div class="my-3 d-flex justify-content-between">
                 <input type="submit" class="btn btn-success" value="Salva">
-                <input type="reset" class="btn btn-warning" value="Azzera campi di compilazione">
+                
+                <th:block th:if="${isNew}">
+                    <input type="reset" class="btn btn-warning" value="Azzera campi di compilazione">
+                </th:block>
             </div>
 
 
