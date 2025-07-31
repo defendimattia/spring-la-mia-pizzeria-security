@@ -16,7 +16,7 @@
         <hr>
 
         <form id="specialOffert-form" th:object="${specialOffert}"
-            th:action="${isNew} ? @{/specialofferts/create} : @{/specialofferts/{id}/edit(id = *{id})}" method="post">
+            th:action="${isNew} ? @{/specialofferts/create} : @{/specialofferts/edit/{id}(id = *{id})}" method="post">
 
             <input type="hidden" id="relativePizza" th:field="*{pizza}">
 

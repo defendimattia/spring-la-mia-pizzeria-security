@@ -35,7 +35,14 @@ public class SpecialOffertController {
         return "redirect:/pizzas/" + formSpecialOffert.getPizza().getId();
     }
 
-    @PostMapping("/{id}/edit")
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable Integer id, Model model) {
+
+        model.addAttribute("specialOffert", repository.findById(id).get());
+        return "/special-offerts/create-or-edit";
+    }
+
+    @PostMapping("/edit/{id}")
     public String update(@Valid @ModelAttribute("specialOffert") SpecialOffert formSpecialOffert,
             BindingResult bindingResult,
             Model model) {
@@ -49,11 +56,6 @@ public class SpecialOffertController {
         return "redirect:/pizzas/" + formSpecialOffert.getPizza().getId();
     }
 
-    @GetMapping("/edit/{id}")
-    public String edit(@PathVariable Integer id, Model model) {
 
-        model.addAttribute("specialOffert", repository.findById(id).get());
-        return "/special-offerts/create-or-edit";
-    }
 
 }
