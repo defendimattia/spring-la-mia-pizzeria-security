@@ -2,6 +2,8 @@ package org.lessons.java.crudrelazioni.spring_la_mia_pizzeria;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -39,9 +41,11 @@ public class SpecialOffert {
     private String title;
 
     @FutureOrPresent(message = "The starting date cannot be in the past")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateStart;
 
     @FutureOrPresent(message = "The ending date cannot be in the past")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateEnd;
 
     public Integer getId() {
