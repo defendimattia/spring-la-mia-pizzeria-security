@@ -31,7 +31,7 @@ public class PizzaController {
     public String index(@RequestParam(name = "ingredients", required = false) String ingredients, Model model) {
 
         List<Pizza> pizzas = repository.findAll();
-        ;
+        
 
         if (ingredients != null && !ingredients.isEmpty()) {
             List<Pizza> filteredPizzas = new ArrayList<>();
