@@ -1,9 +1,12 @@
 package org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -19,6 +22,9 @@ public class Ingredient {
     @NotBlank(message = "Ingredient must have a valid name")
     @Size(min = 3, max = 50, message = "Ingredient name must be between 3 and 50 characters long")
     private String name;
+
+    @ManyToMany(mappedBy = "ingredients")
+    private List<Pizza> pizzas;
 
     public Ingredient(Integer id, String name) {
         this.id = id;
@@ -42,6 +48,14 @@ public class Ingredient {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Pizza> getPizzas() {
+        return this.pizzas;
+    }
+
+    public void setPizzas(List<Pizza> pizzas) {
+        this.pizzas = pizzas;
     }
 
     @Override
