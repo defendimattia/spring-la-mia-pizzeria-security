@@ -24,9 +24,42 @@
         </div>
 
         <div th:unless="${#lists.isEmpty(ingredients)}">
+
             <ul>
-                <li th:each="ingredient : ${ingredients}" th:text="${ingredient.name}" class="fs-4 fst-italic"></li>
+                <li th:each="ingredient : ${ingredients}" class="fs-4 fst-italic">
+                    [[${ingredient.name}]]
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                        th:attr="data-bs-target=|#staticBackdrop-${ingredient.id}|"><i class="fa-solid fa-trash"></i>
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" th:id="|staticBackdrop-${ingredient.id}|" data-bs-backdrop="static"
+                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Elimina</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div th:text="|Eliminare ${ingredient.name}?|" class="modal-body"></div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Annulla</button>
+
+                                    <form action="#" th:action="@{/ingredients/delete/{id}(id=${ingredient.id})}"
+                                        method="post">
+                                        <button class="btn btn-danger" type="submit" id="submitButton">Elimina</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
             </ul>
+
         </div>
 
     </div>
