@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ingredienti</title>
+
+    <th:block th:replace="~{fragments/style :: styles}"></th:block>
+</head>
+
+<body>
+    <th:block th:replace="~{fragments/navbar :: navbar}"></th:block>
+
+    <div class="container my-3">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>I nostri ingredienti</h1>
+            <a th:href="@{/ingredients/create}" class="btn btn-success">Aggiungi ingrediente</a>
+        </div>
+
+
+        <div th:if="${#lists.isEmpty(ingredients)}" class="alert alert-warning" role="alert">
+            Nessun ingrediente disponibile
+        </div>
+
+        <div th:unless="${#lists.isEmpty(ingredients)}">
+            <ul>
+                <li th:each="ingredient : ${ingredients}" th:text="${ingredient.name}" class="fs-4 fst-italic"></li>
+            </ul>
+        </div>
+
+    </div>
+    <th:block th:replace="~{fragments/style :: bootstrap-js}"></th:block>
+</body>
+
+</html>
