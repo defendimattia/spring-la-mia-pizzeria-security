@@ -3,8 +3,8 @@ package org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.Pizza;
-import org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.SpecialOffert;
+import org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.model.Pizza;
+import org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.model.SpecialOffert;
 import org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
