@@ -23,12 +23,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class IngredientController {
 
     @Autowired
-    private IngredientRepository repository;
+    private IngredientRepository ingredientRepository;
 
     @GetMapping("")
     public String index(Model model) {
 
-        List<Ingredient> ingredients = repository.findAll();
+        List<Ingredient> ingredients = ingredientRepository.findAll();
 
         model.addAttribute("ingredients", ingredients);
 
@@ -51,20 +51,20 @@ public class IngredientController {
             return "ingredients/create-or-edit";
         }
 
-        repository.save(formIngredient);
+        ingredientRepository.save(formIngredient);
         return "redirect:/ingredients";
     }
 
     @PostMapping("/delete/{id}")
     public String delete(@PathVariable Integer id) {
 
-        Ingredient ingredientToDelete = repository.findById(id).get();
+        Ingredient ingredientToDelete = ingredientRepository.findById(id).get();
 
         for (Pizza pizza : ingredientToDelete.getPizzas()) {
             pizza.getIngredients().remove(ingredientToDelete);
         }
 
-        repository.delete(ingredientToDelete);
+        ingredientRepository.delete(ingredientToDelete);
 
         return "redirect:/ingredients";
     }

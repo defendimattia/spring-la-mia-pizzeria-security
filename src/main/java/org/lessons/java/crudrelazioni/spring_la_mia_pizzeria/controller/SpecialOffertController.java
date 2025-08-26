@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class SpecialOffertController {
 
     @Autowired
-    private SpecialOffertRepository repository;
+    private SpecialOffertRepository specialOffertRepository;
 
     @PostMapping("/create")
     public String store(@Valid @ModelAttribute("specialOffert") SpecialOffert formSpecialOffert,
@@ -30,7 +30,7 @@ public class SpecialOffertController {
             return "special-offerts/create-or-edit";
         }
 
-        repository.save(formSpecialOffert);
+        specialOffertRepository.save(formSpecialOffert);
 
         return "redirect:/pizzas/" + formSpecialOffert.getPizza().getId();
     }
@@ -38,7 +38,7 @@ public class SpecialOffertController {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Integer id, Model model) {
 
-        model.addAttribute("specialOffert", repository.findById(id).get());
+        model.addAttribute("specialOffert", specialOffertRepository.findById(id).get());
         return "/special-offerts/create-or-edit";
     }
 
@@ -51,7 +51,7 @@ public class SpecialOffertController {
             return "/special-offerts/create-or-edit";
         }
 
-        repository.save(formSpecialOffert);
+        specialOffertRepository.save(formSpecialOffert);
 
         return "redirect:/pizzas/" + formSpecialOffert.getPizza().getId();
     }
