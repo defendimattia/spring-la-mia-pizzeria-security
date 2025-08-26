@@ -10,7 +10,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -74,14 +73,6 @@ public class Pizza {
         this.name = name;
     }
 
-    public String getDescription() {
-        return this.description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getImageURL() {
         return this.imageURL;
     }
@@ -119,7 +110,6 @@ public class Pizza {
         return "{" +
                 " id='" + getId() + "'" +
                 ", name='" + getName() + "'" +
-                ", description='" + getDescription() + "'" +
                 ", imageURL='" + getImageURL() + "'" +
                 ", price='" + getPrice() + "'" +
                 "}";

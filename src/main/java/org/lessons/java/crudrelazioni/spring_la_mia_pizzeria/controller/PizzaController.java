@@ -1,8 +1,5 @@
 package org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.model.Pizza;
 import org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.model.SpecialOffert;
 import org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.repository.IngredientRepository;
@@ -12,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
 
@@ -32,24 +28,9 @@ public class PizzaController {
     private IngredientRepository ingredientRepository;
 
     @GetMapping("")
-    public String index(@RequestParam(name = "ingredients", required = false) String ingredients, Model model) {
+    public String index(Model model) {
 
-        List<Pizza> pizzas = pizzaRepository.findAll();
-
-        if (ingredients != null && !ingredients.isEmpty()) {
-            List<Pizza> filteredPizzas = new ArrayList<>();
-
-            for (Pizza pizza : pizzas) {
-                if (pizza.getDescription() != null &&
-                        pizza.getDescription().toLowerCase().contains(ingredients.toLowerCase())) {
-                    filteredPizzas.add(pizza);
-                }
-            }
-
-            pizzas = filteredPizzas;
-        }
-
-        model.addAttribute("pizzas", pizzas);
+        model.addAttribute("pizzas", pizzaRepository.findAll());
         return "pizzas/index";
     }
 
