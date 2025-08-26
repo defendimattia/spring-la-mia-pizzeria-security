@@ -23,10 +23,9 @@ import jakarta.validation.constraints.Size;
 @Table(name = "pizzas")
 public class Pizza {
 
-    public Pizza(Integer id, String name, String description, String imageURL, BigDecimal price) {
+    public Pizza(Integer id, String name, String imageURL, BigDecimal price) {
         this.id = id;
         this.name = name;
-        this.description = description;
         this.imageURL = imageURL;
         this.price = price;
     }
@@ -49,10 +48,6 @@ public class Pizza {
     @NotBlank(message = "Must insert a name")
     @Size(min = 2, max = 100, message = "The name must be between 2 and 100 characters long")
     private String name;
-
-    @Lob
-    @Size(min = 3, max = 500, message = "The description must be at most 500 characters long")
-    private String description;
 
     @Column(name = "image_url")
     @Size(max = 300, message = "The image URL must be at most 300 characters long")

@@ -60,10 +60,7 @@ public class Ingredient {
 
     @Override
     public String toString() {
-        return "{" +
-                " id='" + getId() + "'" +
-                ", name='" + getName() + "'" +
-                "}";
+        return getName();
     }
 
 }

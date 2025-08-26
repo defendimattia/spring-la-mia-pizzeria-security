@@ -9,11 +9,17 @@
             <h1 th:text="|Pizza *{name}|"></h1>
             <hr class="border border-danger border-2 opacity-100">
 
-            <i th:text="*{description}"></i>
+            <i>
+                <span th:each="ingredient, iter : *{ingredients}">
+                    <span th:text="${ingredient.name}"></span>
+                    <span th:unless="${iter.last}">,</span>
+                </span>
+            </i>
+            
             <h4 th:text="|*{price} €|" class="my-3"></h4>
 
             <div class="my-5">
-                <h5>Offerte speciali</h>
+                <h5>Offerte speciali</h5>
                     <hr class="border border-danger opacity-100">
 
                     <div th:if="${#lists.isEmpty(pizza.getSpecialOfferts())}" class="alert alert-warning" role="alert">
