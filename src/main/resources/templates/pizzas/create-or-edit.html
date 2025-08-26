@@ -52,8 +52,8 @@
 
             <div class="my-3">
                 <label for="price">Prezzo:</label>
-                <input type="number" class="form-control" id="price" th:field="*{price}" min="0"
-                    th:errorClass="is-invalid">
+                <input type="text" class="form-control" id="price" th:field="*{price}" pattern="[0-9]+([\.][0-9]{1,2})?"
+                    placeholder="0.00" th:errorClass="is-invalid">
                 <div th:if="${#fields.hasErrors('price')}" class="text-danger">
                     <small th:errors="*{price}"></small>
                 </div>
