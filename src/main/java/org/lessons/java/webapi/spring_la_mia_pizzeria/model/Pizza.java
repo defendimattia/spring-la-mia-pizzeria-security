@@ -1,4 +1,4 @@
-package org.lessons.java.crudrelazioni.spring_la_mia_pizzeria.model;
+package org.lessons.java.webapi.spring_la_mia_pizzeria.model;
 
 import java.math.BigDecimal;
 import java.util.List;

@@ -1,25 +1,14 @@
 # esercizio
 
-- Nuova importante funzionalità : le offerte speciali!
-- In alcuni momenti potremmo voler vendere le nostre pizze a un prezzo scontato.
+- Ricordatevi di sganciare la vostra vecchia repository e di crearne una nuova per questo esercizio, che prosegue il lavoro della pizzeria, dove lo avevate lasciato.
+- Implementiamo l'accesso alla nostra applicazione anche all’esterno, esponiamo degli endpoint REST!
+- Implementiamo quindi i metodi CRUD tramite RestController.
 
-- Dobbiamo quindi predisporre tutto il codice necessario per poter collegare un’offerta speciale a una pizza (in una relazione 1 a molti, cioè un’offerta speciale può essere collegata a una sola pizza, e una pizza può essere collegata a più offerte speciali).
+- Diamo la possibilità di :
+    - ottenere la lista di pizze (dobbiamo anche poterle filtrare per titolo)
+    - leggere i dettagli di una singola pizza
+    - creare una nuova pizza
+    - modificare una pizza esistente
+    - cancellare una pizza
 
-- L’offerta speciale avrà :
-
-    - una data di inizio
-    - una data di fine
-    - un titolo
-
-- La pagina di dettaglio della singola pizza mostrerà l’elenco delle offerte collegate e avrà un bottone “Crea nuova offerta speciale” per aggiungerne una nuova.
-- Accanto ad ogni offerta speciale è previsto un bottone che mi porterà a una pagina per modificarla.
-
-
-# esercizio 2
-
-- Aggiungiamo una nuova fuzionalità per la nostra pizzeria: gli ingredienti!
-- Ogni pizza può avere più ingredienti, e ogni ingrediente può essere collegato a più pizze.
-- Prevediamo quindi una pagina per mostrare l’elenco di tutti gli ingredienti che utilizziamo nella nostra pizzeria che permetta anche di crearne di nuovi (e di cancellarli).
-- Nella pagina di creazione (e modifica) della singola pizza dobbiamo dare la possibilità di collegare uno o più ingredienti.
-
-
+- Queste operazioni devono poter essere eseguite tramite PostMan, non preoccupiamoci quindi della parte di frontend per ora.
