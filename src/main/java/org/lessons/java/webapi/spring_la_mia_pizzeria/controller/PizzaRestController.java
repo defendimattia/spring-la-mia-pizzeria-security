@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,11 +48,16 @@ public class PizzaRestController {
         return new ResponseEntity<Pizza>(pizzaRepository.save(pizza), HttpStatus.CREATED);
     }
 
-    // @PutMapping("/{id}")
-    // public Pizza update(@Valid @RequestBody Pizza pizza, @PathVariable Integer id) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Pizza> update(@Valid @RequestBody Pizza pizza, @PathVariable Integer id) {
 
-    //     return;
-    // }
+        if (pizzaRepository.findById(id).isEmpty()) {
+            return new ResponseEntity<Pizza>(HttpStatus.NOT_FOUND);
+        }
+        
+        pizza.setId(id);
+        return new ResponseEntity<Pizza>(pizzaRepository.save(pizza), HttpStatus.OK);
+    }
 
     // @DeleteMapping("/{id}") {
     //     public void delete(@Valid @PathVariable Integer id) {
