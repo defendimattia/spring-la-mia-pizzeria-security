@@ -8,6 +8,7 @@ import org.lessons.java.webapi.spring_la_mia_pizzeria.repository.PizzaRepository
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,14 +55,20 @@ public class PizzaRestController {
         if (pizzaRepository.findById(id).isEmpty()) {
             return new ResponseEntity<Pizza>(HttpStatus.NOT_FOUND);
         }
-        
+
         pizza.setId(id);
         return new ResponseEntity<Pizza>(pizzaRepository.save(pizza), HttpStatus.OK);
     }
 
-    // @DeleteMapping("/{id}") {
-    //     public void delete(@Valid @PathVariable Integer id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Pizza> delete(@PathVariable Integer id) {
 
-    //     }
-    // }
+        if (pizzaRepository.findById(id).isEmpty()) {
+            return new ResponseEntity<Pizza>(HttpStatus.NOT_FOUND);
+        }
+        
+        pizzaRepository.deleteById(id);
+        return new ResponseEntity<Pizza>(HttpStatus.NO_CONTENT);
+    }
+
 }
