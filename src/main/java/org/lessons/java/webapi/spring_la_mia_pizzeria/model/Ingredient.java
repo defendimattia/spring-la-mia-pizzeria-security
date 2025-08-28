@@ -2,6 +2,8 @@ package org.lessons.java.webapi.spring_la_mia_pizzeria.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +26,7 @@ public class Ingredient {
     private String name;
 
     @ManyToMany(mappedBy = "ingredients")
+    @JsonIgnoreProperties("pizzas")
     private List<Pizza> pizzas;
 
     public Ingredient(Integer id, String name) {

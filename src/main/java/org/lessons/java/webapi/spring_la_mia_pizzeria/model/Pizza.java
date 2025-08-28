@@ -3,6 +3,10 @@ package org.lessons.java.webapi.spring_la_mia_pizzeria.model;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +24,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "pizzas")
+@JsonPropertyOrder({ "id", "name", "ingredients", "specialOfferts", "imageURL", "price" })
 public class Pizza {
 
     public Pizza(Integer id, String name, String imageURL, BigDecimal price) {
@@ -37,10 +42,12 @@ public class Pizza {
     private Integer id;
 
     @OneToMany(mappedBy = "pizza")
+    @JsonManagedReference
     private List<SpecialOffert> specialOfferts;
 
     @ManyToMany()
     @JoinTable(name = "ingredient_pizza", joinColumns = @JoinColumn(name = "pizza_id"), inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
+    @JsonIgnoreProperties("pizzas")
     private List<Ingredient> ingredients;
 
     @Column(nullable = false)
