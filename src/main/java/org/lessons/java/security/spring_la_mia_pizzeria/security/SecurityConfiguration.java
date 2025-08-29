@@ -26,7 +26,8 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.PATCH, "/pizzas/**").hasAuthority("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/pizzas/**", "/ingredients/delete/**").hasAuthority("ADMIN")
                 .requestMatchers("/pizzas", "/pizzas/**", "/ingredients").hasAnyAuthority("USER", "ADMIN")
-                .requestMatchers("/").permitAll()
+                .requestMatchers("/").hasAnyAuthority("USER", "ADMIN")
+                .requestMatchers("/login", "/logout").permitAll()
                 .anyRequest().denyAll())
                 .formLogin(Customizer.withDefaults());
 
