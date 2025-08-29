@@ -1,7 +1,7 @@
-package org.lessons.java.webapi.spring_la_mia_pizzeria.controller;
+package org.lessons.java.security.spring_la_mia_pizzeria.controller;
 
-import org.lessons.java.webapi.spring_la_mia_pizzeria.model.SpecialOffert;
-import org.lessons.java.webapi.spring_la_mia_pizzeria.repository.SpecialOffertRepository;
+import org.lessons.java.security.spring_la_mia_pizzeria.model.SpecialOffert;
+import org.lessons.java.security.spring_la_mia_pizzeria.repository.SpecialOffertRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
