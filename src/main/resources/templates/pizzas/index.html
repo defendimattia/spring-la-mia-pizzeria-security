@@ -15,7 +15,7 @@
 
         <div class="d-flex justify-content-between align-items-center">
             <h1>Le nostre pizze</h1>
-            <a th:href="@{/pizzas/create}" class="btn btn-success">Aggiungi pizza</a>
+            <a th:href="@{/pizzas/create}" class="btn btn-success" sec:authorize="hasAuthority('ADMIN')">Aggiungi pizza</a>
         </div>
 
 

@@ -15,7 +15,7 @@
                 </div>
 
             </a>
-            <div class="d-flex gap-1 justify-content-center">
+            <div class="d-flex gap-1 justify-content-center" sec:authorize="hasAuthority('ADMIN')">
                 <a th:href="@{/pizzas/edit/{id}(id=${item.id})}" class="btn btn-success btn-sm">
                     <i class="fa-solid fa-pencil"></i>
                 </a>

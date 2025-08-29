@@ -15,7 +15,7 @@
 
         <div class="d-flex justify-content-between align-items-center">
             <h1>I nostri ingredienti</h1>
-            <a th:href="@{/ingredients/create}" class="btn btn-success">Aggiungi ingrediente</a>
+            <a th:href="@{/ingredients/create}" class="btn btn-success" sec:authorize="hasAuthority('ADMIN')">Aggiungi ingrediente</a>
         </div>
 
 
@@ -31,7 +31,7 @@
 
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                        th:attr="data-bs-target=|#staticBackdrop-${ingredient.id}|"><i class="fa-solid fa-trash"></i>
+                        th:attr="data-bs-target=|#staticBackdrop-${ingredient.id}|" sec:authorize="hasAuthority('ADMIN')"><i class="fa-solid fa-trash"></i>
                     </button>
                     <!-- Modal -->
                     <div class="modal fade" th:id="|staticBackdrop-${ingredient.id}|" data-bs-backdrop="static"

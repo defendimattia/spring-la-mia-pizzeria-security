@@ -31,14 +31,14 @@
                             <li th:each="offert : ${pizza.getSpecialOfferts()}" class="list-group-item"
                                 th:object="${offert}">
                                 <a class="btn btn-primary btn-sm"
-                                    th:href="@{/specialofferts/edit/{id}( id = ${offert.id} )}"><i
+                                    th:href="@{/specialofferts/edit/{id}( id = ${offert.id} )}" sec:authorize="hasAuthority('ADMIN')"><i
                                         class="fa-solid fa-pencil"></i></a>
                                 [[${offert.title}]]
                             </li>
                         </ul>
                     </div>
 
-                    <a th:href="@{/pizzas/{id}/specialoffert(id = *{id})}" class="btn btn-success btn-sm my-2">Aggiungi
+                    <a th:href="@{/pizzas/{id}/specialoffert(id = *{id})}" class="btn btn-success btn-sm my-2" sec:authorize="hasAuthority('ADMIN')">Aggiungi
                         offerta speciale</a>
             </div>
 
